@@ -1,3 +1,5 @@
+import time
+
 data = []
 count = 0
 with open('reviews.txt', 'r') as f:
@@ -29,6 +31,7 @@ print('一共有', len(good), '筆留言中有提到good')
 
 
 #文字計數，並且增加查詢功能
+start_time = time.time()
 wc = {}
 for d in data: # 先從百萬留言清單中取出每一條留言
     words = d.split() # 再用空格分開哪一個字，並成為一個字的清單
@@ -41,6 +44,8 @@ for d in data: # 先從百萬留言清單中取出每一條留言
 for word in wc:
     if wc[word] > 1000000:
         print(word, wc[word])
+end_time = time.time()
+print('花了', end_time - start_time, '秒')
 print('總共有', len(wc), '個字！')
 
 while True:
